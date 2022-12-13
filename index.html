@@ -4,87 +4,199 @@
     <meta charset="UTF-8">
     <meta content="IE=edge" http-equiv="X-UA-Compatible">
     <meta content="width=device-width, initial-scale=1" name="viewport">
-    <title>판뚜 결혼식</title>
-    <meta content="판뚜 결혼식 축하해주세요ㅎ" name="description"/>
-    <meta property="og:image" content="images/panpic0.png">
+    <title>최원영과 이소민의 결혼식</title>
+    <meta content="최원영과 이소민의 결혼식에 와서 축하해주세요~!" name="description"/>
+    <meta property="og:image" content="images/pic2.jpeg">
+    <meta property="fb:app_id" content="781066922265598" />
+    <meta property="fb:admins" content="Choi.Anderson"/>
     <link href="images/favicon/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
     <link href="images/favicon/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
     <link href="images/favicon/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
-    <link href="docs/styles/main.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Dosis:400,500" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Great+Vibes" rel="stylesheet">
+    <link href="css/ekko-lightbox.css" rel="stylesheet">
+    <link href="styles/main.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Gamja+Flower|Gugi|Noto+Serif+KR|Stylish|Sunflower:300"
+          rel="stylesheet">
     <script src="https://code.jquery.com/jquery-2.2.1.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/remarkable/1.7.1/remarkable.js" type="text/javascript"></script>
-    <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-TBNHSTG');</script>
-    <!-- End Google Tag Manager -->
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QT9WZ23XT2"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
 
-        gtag('config', 'G-QT9WZ23XT2');
+
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="https://cdn.emailjs.com/sdk/2.3.2/email.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/remarkable/1.7.1/remarkable.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        function sendMail() {
+
+            (function () {
+                emailjs.init("user_yjLL5xG0A3kkOCH5BGIDh");
+                emailjs.send("wedding-mail", "gift_send", {
+                    name: $("#sender-name").value,
+                    gift: $("#gift-name").text(),
+                    message: $("#sender-message").value
+                }).then(function (response) {
+                    console.log("SUCCESS. status=%d, text=%s", response.status, response.text);
+                }, function (err) {
+                    console.log("FAILED. error=", err);
+                });
+            })();
+        }
+
+        function findGetParameter(parameterName) {
+            var result = null,
+                tmp = [];
+            location.search
+                .substr(1)
+                .split("&")
+                .forEach(function (item) {
+                  tmp = item.split("=");
+                  if (tmp[0] === parameterName) result = decodeURIComponent(tmp[1]);
+                });
+            return result;
+        }
+
+        $(document).ready(function () {
+
+            function getText(){
+                var result = null;
+                $.ajax( { url: "https://raw.githubusercontent.com/AndersonChoi/wedding-card/master/README.md",
+                        type: 'get',
+                        dataType: 'html',
+                        async: false,
+                        success: function(data) { result = data; }
+                    }
+                );
+                FileReady = true;
+                return result;
+            }
+            var markdown_source = getText();
+            var comment_contents = markdown_source.split("축하의 말")[1];
+
+            var md = new Remarkable();
+            $("#comments").append(md.render(comment_contents));
+
+            
+            if(findGetParameter('gift')=='false'){
+                $('#gifts').hide();
+            }
+        });
+
+
+
+
     </script>
 </head>
 
 <body id="top">
 <header></header>
 <div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v3.2"></script>
 <div class="page-content">
     <div class="div">
         <div class="ww-home-page" id="home">
             <div class="ww-wedding-announcement d-flex align-items-center justify-content-start">
                 <div class="container ww-announcement-container">
-                    <p class="ww-couple-name" style="font-size:4.0em">판뚜 결혼</p>
-                    <p class="h2 mt-5 "
-                       style="font-family: 'Noto Serif KR', serif; font-size:1.3em;">
-                        <b >2022. 07. 03. (일) PM 02:00</b>
-                        <br>아펠가모 반포 LL층<br><a href="#map" style="color: #adedee">오시는 길 안내</a><br>
+                    <p class="ww-couple-name ww-title" style="font-size:4.0em">Wonyoung & Somin</p>
+                    <p class="h2 mt-5 ww-title" style="font-family: 'Gugi', cursive; font-size:1.0em">
+                        | WE ARE GETTING MARRIED |
+                    </p>
+                    <p class="h2 mt-5 ww-title"
+                       style="font-family: 'Noto Serif KR', serif; font-size:1.0em; letter-spacing:-1px">
+                        <b style="font-size:1.4em;">2019. 05. 18. SAT PM 02:30</b>
+                        <br>부산 해운대 센텀시티 센텀사이언스파크 23층
                     </p>
                 </div>
             </div>
         </div>
+        <div class="ww-nav-bar sticky-top bg-light">
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <div class="container">
+                    <button aria-controls="ww-navbarNav" aria-expanded="false" aria-label="Toggle navigation"
+                            class="navbar-toggler"
+                            data-target="#ww-navbarNav" data-toggle="collapse" type="button">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse text-uppercase" id="ww-navbarNav">
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item"><a class="nav-link smooth-scroll" href="#home">Home</a></li>
+                            <li class="nav-item"><a class="nav-link smooth-scroll" href="#couple">Couple</a></li>
+                            <li class="nav-item"><a class="nav-link smooth-scroll" href="#events">Events</a></li>
+                            <li class="nav-item"><a class="nav-link smooth-scroll" href="#gallery">Gallery</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
         <div class="ww-section" id="couple">
             <div class="container">
-                <h3 class="text-center"><a href="https://hits.sh/github.com/panddubeok/wedding-card/"><img alt="Hits" src="https://hits.sh/github.com/panddubeok/wedding-card.svg?view=today-total&style=for-the-badge"/></a></h3><br>
-                <h2 class="h1 text-center pb-3 ww-title" style="font-family: 'Noto Serif KR', serif;">전할 말씀</h2>
+                <h2 class="h1 text-center pb-3 ww-title" style="font-family: 'Noto Serif KR', serif;">신랑 & 신부</h2>
                 <div class="row text-center">
-<!--                    <div class="col-md-6">-->
-<!--                        <div class="mt-3">-->
-<!--                            <h3 class="h2 ww-title" style="font-family: 'Sunflower', sans-serif; font-size:1.5em">-->
-<!--                                뚜자친구? 뚜부인? 뚜각시?</h3>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                    <div class="col-md-6">-->
-<!--                        <div class="mt-3">-->
-<!--                            <h3 class="h2 ww-title" style="font-family: 'Sunflower', sans-serif; font-size:1.5em">-->
-<!--                                판교 뚜벅쵸</h3>-->
-<!--                        </div>-->
-<!--                    </div>-->
-                    <div class="col-md-12">
-                        <img alt="Bride" class="img-fluid" src="docs/images/panpic0.png"/>
-                        <p class="h2 mt-5 " style="font-family: 'Noto Serif KR', serif; font-size:1.3em;">
-                            구독자님들의<br>축하해주시는 그 마음,<br>그것만으로도 충분히 감사합니다.<br><br>
-
-                            앞으로 잘 살겠습니다.<br><br>
-
-                            궁금한 사항은<br><a href="https://namecard.kakao.com/panddu" target="_blank">여기</a>를 눌러 <br>개별 문의 부탁드립니다^^
-                        </p>
+                    <div class="col-md-6">
+                        <div class="mt-3">
+                            <h3 class="h2 ww-title" style="font-family: 'Sunflower', sans-serif; font-size:1.5em">
+                                이소민</h3>
+                            <img alt="Groom" class="img-fluid" src="images/pic8.jpeg"/>
+                        </div>
                     </div>
-<!--                    <div class="colorscripter-code" style="color:#010101;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; width:1250px; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="width: inherit; margin:0;padding:0;border:none;background-color:#fafafa;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px;border-right:2px solid #e5e5e5"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#666;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div><div style="line-height:130%">2</div><div style="line-height:130%">3</div><div style="line-height:130%">4</div><div style="line-height:130%">5</div><div style="line-height:130%">6</div><div style="line-height:130%">7</div><div style="line-height:130%">8</div><div style="line-height:130%">9</div><div style="line-height:130%">10</div><div style="line-height:130%">11</div><div style="line-height:130%">12</div><div style="line-height:130%">13</div><div style="line-height:130%">14</div><div style="line-height:130%">15</div><div style="line-height:130%">16</div><div style="line-height:130%">17</div><div style="line-height:130%">18</div><div style="line-height:130%">19</div><div style="line-height:130%">20</div><div style="line-height:130%">21</div><div style="line-height:130%">22</div><div style="line-height:130%">23</div><div style="line-height:130%">24</div><div style="line-height:130%">25</div><div style="line-height:130%">26</div><div style="line-height:130%">27</div><div style="line-height:130%">28</div><div style="line-height:130%">29</div><div style="line-height:130%">30</div><div style="line-height:130%">31</div><div style="line-height:130%">32</div><div style="line-height:130%">33</div><div style="line-height:130%">34</div><div style="line-height:130%">35</div><div style="line-height:130%">36</div><div style="line-height:130%">37</div><div style="line-height:130%">38</div><div style="line-height:130%">39</div><div style="line-height:130%">40</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#010101;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%">@AllArgsConstructor</div><div style="padding:0 6px; white-space:pre; line-height:130%"><font color="#a71d5d">public</font>&nbsp;<font color="#a71d5d">class</font>&nbsp;Wedding&nbsp;{</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;<font color="#a71d5d">private</font>&nbsp;LocalDateTime&nbsp;date;</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;<font color="#a71d5d">private</font>&nbsp;<font color="#066de2">String</font>&nbsp;location;</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;<font color="#a71d5d">private</font>&nbsp;Person&nbsp;husband;</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;<font color="#a71d5d">private</font>&nbsp;Person&nbsp;wife;</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;<font color="#a71d5d">public</font>&nbsp;<font color="#a71d5d">void</font>&nbsp;execute()&nbsp;{</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Couple.bind(husband,&nbsp;wife);</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;}</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;<font color="#a71d5d">public</font>&nbsp;<font color="#a71d5d">void</font>&nbsp;invite(Guest&nbsp;guest)&nbsp;{</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;guest.congratulate();</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;guest.applaud();</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;guest.shout();</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;guest.eat(<font color="#63a35c">"뷔페"</font>);</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;}</div><div style="padding:0 6px; white-space:pre; line-height:130%">}</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><font color="#a71d5d">public</font>&nbsp;<font color="#a71d5d">class</font>&nbsp;Application&nbsp;{</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;<font color="#a71d5d">public</font>&nbsp;<font color="#a71d5d">static</font>&nbsp;<font color="#a71d5d">void</font>&nbsp;main()&nbsp;{</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Wedding&nbsp;w&nbsp;<font color="#0086b3"></font><font color="#a71d5d">=</font>&nbsp;<font color="#a71d5d">new</font>&nbsp;Wedding(</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LocalDateTime.of(<font color="#0099cc">2022</font>,&nbsp;<font color="#0099cc">7</font>,&nbsp;<font color="#0099cc">3</font>,&nbsp;<font color="#0099cc">14</font>,&nbsp;<font color="#0099cc">0</font>),</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#63a35c">"판뚜에게&nbsp;개별&nbsp;연락&nbsp;바람"</font>,</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Person.of(<font color="#63a35c">"panddu"</font>),</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Persion.of(<font color="#63a35c">"dduja"</font>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;);</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Guest&nbsp;you&nbsp;<font color="#0086b3"></font><font color="#a71d5d">=</font>&nbsp;Guest.of(<font color="#63a35c">"마음속으로&nbsp;축하해줄&nbsp;여러분"</font>);</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#a71d5d">try</font>&nbsp;{</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;w.invite(you);</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;w.execute();</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;<font color="#a71d5d">catch</font>&nbsp;(PatoException&nbsp;e)&nbsp;{</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#066de2">System</font>.<font color="#066de2">out</font>.<font color="#066de2">println</font>(<font color="#63a35c">"그런&nbsp;일은&nbsp;일어나선&nbsp;안&nbsp;됩니다.."</font>);</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;<font color="#a71d5d">catch</font>&nbsp;(CoronaException&nbsp;e)&nbsp;{</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#999999">//&nbsp;연기&nbsp;or&nbsp;취소</font></div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;}</div><div style="padding:0 6px; white-space:pre; line-height:130%">}</div></div><div style="text-align:right;margin-top:-13px;margin-right:5px;font-size:9px;font-style:italic"><a href="http://colorscripter.com/info#e" target="_blank" style="color:#e5e5e5text-decoration:none">Colored by Color Scripter</a></div></td><td style="vertical-align:bottom;padding:0 2px 4px 0"><a href="http://colorscripter.com/info#e" target="_blank" style="text-decoration:none;color:white"><span style="font-size:9px;word-break:normal;background-color:#e5e5e5;color:white;border-radius:10px;padding:1px">cs</span></a></td></tr></table></div>-->
-<!--                    <div class="colorscripter-code" style="color:#010101;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; width:1250px; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="width: inherit; margin:0;padding:0;border:none;background-color:#fafafa;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px;border-right:2px solid #e5e5e5"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#666;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div><div style="line-height:130%">2</div><div style="line-height:130%">3</div><div style="line-height:130%">4</div><div style="line-height:130%">5</div><div style="line-height:130%">6</div><div style="line-height:130%">7</div><div style="line-height:130%">8</div><div style="line-height:130%">9</div><div style="line-height:130%">10</div><div style="line-height:130%">11</div><div style="line-height:130%">12</div><div style="line-height:130%">13</div><div style="line-height:130%">14</div><div style="line-height:130%">15</div><div style="line-height:130%">16</div><div style="line-height:130%">17</div><div style="line-height:130%">18</div><div style="line-height:130%">19</div><div style="line-height:130%">20</div><div style="line-height:130%">21</div><div style="line-height:130%">22</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#010101;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%">Wedding&nbsp;w&nbsp;<font color="#0086b3"></font><font color="#a71d5d">=</font>&nbsp;<font color="#a71d5d">new</font>&nbsp;Wedding();</div><div style="padding:0 6px; white-space:pre; line-height:130%">w.setDate(LocalDateTime.of(<font color="#0099cc">2022</font>,&nbsp;<font color="#0099cc">7</font>,&nbsp;<font color="#0099cc">3</font>,&nbsp;<font color="#0099cc">14</font>,&nbsp;<font color="#0099cc">0</font>));</div><div style="padding:0 6px; white-space:pre; line-height:130%">w.setLocation(<font color="#63a35c">"판뚜에게&nbsp;개별&nbsp;연락&nbsp;바람"</font>);</div><div style="padding:0 6px; white-space:pre; line-height:130%">w.setHusband(<font color="#63a35c">"판뚜"</font>);</div><div style="padding:0 6px; white-space:pre; line-height:130%">w.setWife(<font color="#63a35c">"뚜자친구"</font>);</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><font color="#a71d5d">try</font>&nbsp;{</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;w.invite(you);</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;w.start();</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;you.congratulate();</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;you.applaud();</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;you.shout();</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;w.finish();</div><div style="padding:0 6px; white-space:pre; line-height:130%">}&nbsp;<font color="#a71d5d">catch</font>&nbsp;(PatoException&nbsp;e)&nbsp;{</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;<font color="#066de2">System</font>.<font color="#066de2">out</font>.<font color="#066de2">println</font>(<font color="#63a35c">"그런&nbsp;일은&nbsp;일어나선&nbsp;안&nbsp;됩니다.."</font>);</div><div style="padding:0 6px; white-space:pre; line-height:130%">}&nbsp;<font color="#a71d5d">catch</font>&nbsp;(Covid19Exception&nbsp;e)&nbsp;{</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;<font color="#999999">//&nbsp;연기&nbsp;or&nbsp;취소</font></div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;<font color="#999999">//&nbsp;w.postpone();</font></div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;<font color="#999999">//&nbsp;w.cancel();</font></div><div style="padding:0 6px; white-space:pre; line-height:130%">}</div></div><div style="text-align:right;margin-top:-13px;margin-right:5px;font-size:9px;font-style:italic"><a href="http://colorscripter.com/info#e" target="_blank" style="color:#e5e5e5text-decoration:none">Colored by Color Scripter</a></div></td><td style="vertical-align:bottom;padding:0 2px 4px 0"><a href="http://colorscripter.com/info#e" target="_blank" style="text-decoration:none;color:white"><span style="font-size:9px;word-break:normal;background-color:#e5e5e5;color:white;border-radius:10px;padding:1px">cs</span></a></td></tr></table></div>-->
+                    <div class="col-md-6">
+                        <div class="mt-3">
+                            <h3 class="h2 ww-title" style="font-family: 'Sunflower', sans-serif; font-size:1.5em">
+                                최원영</h3>
+                            <img alt="Bride" class="img-fluid" src="images/pic9.jpeg"/>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="ww-section bg-light" id="faq">
-            <h2 class="h1 text-center pb-3 ww-title" style="font-family: 'Noto Serif KR', serif;">자주 묻는 질문</h2>
-            <div class="container">
+        <div class="ww-section bg-light" id="events">
+            <div class="container ww-wedding-event">
+                <h2 class="h1 text-center pb-3 ww-title" style="font-family: 'Noto Serif KR', serif;">초대합니다</h2>
+                    <div class="col text-center mb-5">
+                        <h6 style="font-family: 'Noto Serif KR', serif;">
+                            1463<br>
+                            (만난지 4년+1일 되는날 결혼 = 1463일)
+                        </h6>
+                    </div>
                 <div class="row">
-                    <iframe width="100%" height="360" src="https://www.youtube.com/embed/R5V8UBF8lKg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <div class="col-md-7 col-sm-12">
+                        <div class="my-3">
+                            <div class="h4">웨딩 본식</div>
+                            <ul>
+                                <li>
+                                    <i class="text-muted fas fa-map-marker-alt"></i>
+                                    <span class="pl-2 text-muted">부산 해운대 우동 센텀사이언스 파크 23층</span>
+                                </li>
+                                <li class="pt-2">
+                                    <i class="text-muted far fa-calendar-alt"></i>
+                                    <span class="pl-2 text-muted">2019년 5월 18일, 2:30PM</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-5 col-sm-12">
+                        <div class="my-3">
+                            <img alt="Wedding Party" class="img-fluid" src="images/wedding-party.jpg"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-7 col-sm-12">
+                        <div class="my-3">
+                            <div class="h4">식사</div>
+                            <ul>
+                                <li>
+                                    <i class="text-muted fas fa-map-marker-alt "></i>
+                                    <span class="pl-2 text-muted">부산 해운대 우동 센텀사이언스 파크 지하 1층 더파티 센텀점</span>
+                                </li>
+                                <li class="pt-2">
+                                    <i class="text-muted far fa-calendar-alt "></i>
+                                    <span class="pl-2 text-muted">2019년 5월 18일, 2:30PM - 4:30PM</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-5 col-sm-12">
+                        <div class="my-3"><img alt="Reception" class="img-fluid" src="images/reception.jpg"/></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -92,27 +204,37 @@
             <div class="ww-photo-gallery">
                 <div class="container">
                     <h2 class="h1 text-center pb-3 ww-title" style="font-family: 'Noto Serif KR', serif;">포토 갤러리</h2>
-                    <h5 class="h5 text-center pb-3 ww-title" style="font-family: 'Noto Serif KR', serif;">(얼공 안 하는 채널인 점 양해 부탁드립니다.)</h5>
                     <div class="ww-gallery">
                         <div class="card-columns">
-                            <div class="card">
+                            <div class="card" data-groups="[&quot;party&quot;,&quot;wedding&quot;]">
                                 <a data-gallery="ww-gallery" data-toggle="lightbox">
-                                    <img class="img-fluid" src="docs/images/panpic1.png"/>
+                                    <img alt="Gallery Pic 2" class="img-fluid" src="images/pic2.jpeg"/>
                                 </a>
                             </div>
-                            <div class="card">
+                            <div class="card" data-groups="[&quot;vacation&quot;]">
                                 <a data-gallery="ww-gallery" data-toggle="lightbox">
-                                    <img class="img-fluid" src="docs/images/panpic2.png"/>
+                                    <img alt="Gallery Pic 3" class="img-fluid" src="images/pic3.jpeg"/>
                                 </a>
                             </div>
-                            <div class="card">
-                                <a data-gallery="ww-gallery">
-                                    <img class="img-fluid" src="docs/images/panpic3.png"/>
+                            <div class="card" data-groups="[&quot;party&quot;,&quot;vacation&quot;]">
+                                <a data-gallery="ww-gallery" data-toggle="lightbox">
+                                    <img alt="Gallery Pic 4" class="img-fluid" src="images/pic4.jpeg"/>
                                 </a>
                             </div>
-                            <div class="card">
-                                <a data-gallery="ww-gallery">
-                                    <img class="img-fluid" src="docs/images/panpic4.png"/>
+                            <div class="card" data-groups="[&quot;vacation&quot;]">
+                                <a data-gallery="ww-gallery" data-toggle="lightbox">
+                                    <img alt="Gallery Pic 5" class="img-fluid" src="images/pic6.jpeg"/>
+                                </a>
+                            </div>
+                            <div class="card"
+                                 data-groups="[&quot;wedding&quot;,&quot;ceremony&quot;,&quot;party&quot;]">
+                                <a data-gallery="ww-gallery" data-toggle="lightbox">
+                                    <img alt="Gallery Pic 6" class="img-fluid" src="images/pic7.jpeg"/>
+                                </a>
+                            </div>
+                            <div class="card" data-groups="[&quot;vacation&quot;]">
+                                <a data-gallery="ww-gallery" data-toggle="lightbox">
+                                    <img alt="Gallery Pic 7" class="img-fluid" src="images/pic5.jpeg"/>
                                 </a>
                             </div>
                         </div>
@@ -120,65 +242,138 @@
                 </div>
             </div>
         </div>
-
-        <div class="ww-section bg-light" id="donation">
-            <div class="ww-photo-gallery">
+       <div class="ww-section parallax-window  text-white" data-parallax="scroll" data-image-src="images/gift/gift-background.jpg" id="gifts">
+            <div class="ww-gift-section">
                 <div class="container">
-                    <div class="col text-center">
-                        <h2 class="h1 text-center pb-3 ww-title" style="font-family: 'Noto Serif KR', serif;">응원하기</h2>
-                        <h5 class="h5 text-center pb-3 ww-title" style="font-family: 'Noto Serif KR', serif;">(소신껏^^)</h5>
-                        <br>
-<!--                        <a id="link-kakaopay" href="http://kko.to/C3867c2df" target="_blank"><img alt="카카오페이 송금" src="images/btn_send_regular.png"></a><br>-->
-                        <a id="link-toss" href="https://toss.me/panddu" target="_blank"><img alt="토스 송금" src="docs/images/logo-toss-blue.png" style="width: 168px"></a>
-                        <br>
+                    <h2 class="h1 text-center pb-3 ww-title" style="font-family: 'Noto Serif KR', serif;">Gift for our
+                        wedding</h2>
+                    <div class="col text-center mb-5">
+                        <h6 style="font-family: 'Noto Serif KR', serif;">
+                            저희 부부가 앞으로 살아나갈 일상에<br>
+                            오래도록 특별한 기억을 선물하고 싶으신가요?<br>
+                            그렇다면 고민하는 대신 아래 목록을 참고해 주세요.<br>
+                            저희가 필요로 하는 물건들을 정리해 두었습니다.<br>
+                            애정어린 마음으로 보내주신 선물은<br>
+                            가까이 두어 오래도록 아껴 쓰고,<br>
+                            소중하게 간직하겠습니다.
+                            <br><br>
+                            (아래 선물버튼을 눌러 신랑, 신부에게 예약메시지를 보내세요!)
+                        </h6>
                     </div>
-                    <div class="row text-center">
-                        <div class="col-md-12">
-                            <p class="h2 mt-5 " style="font-family: 'Noto Serif KR', serif; font-size:1.3em;">
-                                성원해주신 응원으로<br>
-                                행복하게 잘 살겠습니다.<br>감사합니다^^<br><br>(강매 아님ㅋ 안 주셔도 됨ㅋ)
-                            </p>
+                    <div class="ww-gift">
+                        <div class="gift-columns">
+                            <div class="gift">
+                                <img alt="와인셀러" class="img-fluid gift-img gift-selected" src="images/gift/wineceller.png"/>
+                                <div class="btn-group gift-btn-group" role="group">
+                                    <button class="btn btn-default gift-btn"
+                                            onclick="window.open('https://smartstore.naver.com/dhk00840/products/4311205513')">
+                                        <i class="fa fa-search"></i></button>
+                                    <button class="btn btn-default gift-btn gift-send" data-name="와인셀러"
+                                            onclick="alert('다른분에게 예약된 선물입니다.');"><i
+                                            class="fa fa-gift"></i></button>
+                                </div>
+                            </div>
+                            <div class="gift">
+                                <img alt="전동클렌저" class="img-fluid gift-img gift-selected"
+                                     src="images/gift/philips_clenser.png"/>
+                                <div class="btn-group gift-btn-group" role="group">
+                                    <button class="btn btn-default gift-btn"
+                                            onclick="window.open('https://www.philips.co.kr/c-p/BSC111_06/visapure-mini-facial-cleanser')">
+                                        <i class="fa fa-search"></i></button>
+                                    <button class="btn btn-default gift-btn gift-send" data-name="전동클렌저"
+                                            onclick="alert('다른분에게 예약된 선물입니다.');"><i
+                                            class="fa fa-gift"></i></button>
+                                </div>
+                            </div>
+                            <div class="gift">
+                                <img alt="드라이기" class="img-fluid gift-img gift-selected" src="images/gift/dyson.png"/>
+                                <div class="btn-group gift-btn-group" role="group">
+                                    <button class="btn btn-default gift-btn"
+                                            onclick="window.open('https://www.kr.dyson.com/products/hair-care/dyson-supersonic-hair-dryer')">
+                                        <i class="fa fa-search"></i></button>
+                                    <button  class="btn btn-default gift-btn gift-send" data-name="드라이기"
+                                             onclick="alert('다른분에게 예약된 선물입니다.');"><i
+                                            class="fa fa-gift"></i></button>
+                                </div>
+                            </div>
+                            <div class="gift">
+                                <img alt="믹서기" class="img-fluid gift-img gift-selected" src="images/gift/blender.png"/>
+                                <div class="btn-group gift-btn-group" role="group">
+                                    <button class="btn btn-default gift-btn"
+                                            onclick="window.open('http://jenniferoom.co.kr/product/detail.html?product_no=85&cate_no=24&display_group=1')">
+                                        <i class="fa fa-search"></i></button>
+                                    <button  class="btn btn-default gift-btn gift-send" data-name="믹서기"
+                                             onclick="alert('다른분에게 예약된 선물입니다.');"><i
+                                            class="fa fa-gift"></i></button>
+                                </div>
+                            </div>
+                            <div class="gift">
+                                <img alt="레고" class="img-fluid gift-img gift-selected" src="images/gift/lego.png"/>
+                                <div class="btn-group gift-btn-group" role="group">
+                                    <button class="btn btn-default gift-btn"
+                                            onclick="window.open('https://shop.lego.com/ko-KR/product/10232')"><i
+                                            class="fa fa-search"></i></button>
+                                    <button class="btn btn-default gift-btn gift-send" data-name="레고"
+                                            
+                                             onclick="alert('다른분에게 예약된 선물입니다.');"><i
+                                            class="fa fa-gift"></i></button>
+                                </div>
+                            </div>
+                            <div class="gift">
+                                <img alt="전기레인지" class="img-fluid gift-img gift-selected" src="images/gift/range.png"/>
+                                <div class="btn-group gift-btn-group" role="group">
+                                    <button class="btn btn-default gift-btn"
+                                            onclick="window.open('https://www.lge.co.kr/lgekor/product/kitchen/electricRange/productDetail.do?cateId=4410&prdId=EPRD.333447')">
+                                        <i class="fa fa-search"></i></button>
+                                    <button class="btn btn-default gift-btn gift-send" data-name="전기레인지"
+                                            
+                                             onclick="alert('다른분에게 예약된 선물입니다.');"><i
+                                            class="fa fa-gift"></i></button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
-        <div class="ww-section" id="map">
+        <div class="ww-section ww-rsvp-detail" id="map">
             <div class="container">
-                <h2 class="h1 text-center pb-3 ww-title" style="font-family: 'Noto Serif KR', serif;">오시는 길</h2>
-            <!-- * 카카오맵 - 지도퍼가기 -->
-            <!-- 1. 지도 노드 -->
-                <div id="daumRoughmapContainer1656663202516" class="root_daum_roughmap root_daum_roughmap_landing" style="width:100%"></div>
-
-                <!--
-                  2. 설치 스크립트
-                  * 지도 퍼가기 서비스를 2개 이상 넣을 경우, 설치 스크립트는 하나만 삽입합니다.
-                -->
-                <script charset="UTF-8" class="daum_roughmap_loader_script" src="https://ssl.daumcdn.net/dmaps/map_js_init/roughmapLoader.js"></script>
-
-                <!-- 3. 실행 스크립트 -->
-                <script charset="UTF-8">
-                    new daum.roughmap.Lander({
-                        "timestamp" : "1656663202516",
-                        "key" : "2atdq",
-                        // "mapWidth" : "640",
-                        "mapHeight" : "400"
-                    }).render();
-                </script>
-                <div class="row text-center">
-                    <div class="col-md-12">
-                        <p class="h2 mt-5 " style="font-family: 'Noto Serif KR', serif; font-size:1.3em;">
-                            "아펠가모 반포점"<br>
-                            서울 서초구 반포대로 235 효성빌딩 지하2층<br>(반포동 63-7)<br>
-                            <br>
-                            서울고속버스터미널(경부)<br>
-                            센트럴시티터미널(호남)<br>
-                            고속터미널역(3,7,9호선)<br>
-                            도보 5~10분
-                        </p>
+                <div class="col text-center">
+                    <h2 class="h1 text-center pb-3 ww-title" style="font-family: 'Noto Serif KR', serif;">오시는 길</h2>
+                    <div>
+                        <h5 style="font-family: 'Noto Serif KR', serif;">센텀사이언스파크웨딩홀 23층 스카이홀</h5>
+                        <h6 style="font-family: 'Noto Serif KR', serif;">(부산 해운대구 센텀중앙로 79)</h6>
                     </div>
                 </div>
+
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <div class="my-3 text-center">
+                            <a href="http://naver.me/5pTy3HCa">
+                                <img alt="naver-map" class="map-icon" id="naver-map"
+                                     src="images/map/naver-map.png"/>
+                            </a>
+                            <a href="http://dmaps.kr/2bms8">
+                                <img alt="kakao-map" class="map-icon" id="kakao-map"
+                                     src="images/map/kakao-map.png"/>
+                            </a>
+                            <a href="https://maps.app.goo.gl/jfDxw">
+                                <img alt="google-map" class="map-icon" id="google-map"
+                                     src="images/map/google-map.png"/>
+                            </a>
+                        </div>
+                        <div class="col text-center">
+                            <label style="font-family: 'Noto Serif KR', serif; font-size: 15px;">
+                                셔틀버스 - 센텀시티역 4번출구앞에서 15분 간격으로 운행
+                            </label>
+                        </div>
+                        <div class="my-3">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3261.297439052569!2d129.1238775160104!3d35.1741384652207!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x356892c2513ecf5d%3A0x7d362ece2091e2f8!2z7IS87YWA7IKs7J207Ja47Iqk7YyM7YGsIOy7qOuypOyFmO2ZgA!5e0!3m2!1sko!2skr!4v1554092125630!5m2!1sko!2skr" width="100%" height="400" frameborder="0" style="border:0" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                </div>
+
+
             </div>
         </div>
 
@@ -186,21 +381,14 @@
             <div class="ww-photo-gallery">
                 <div class="container">
                     <div class="col text-center">
-                        <h2 class="h1 text-center pb-3 ww-title" style="font-family: 'Noto Serif KR', serif;">축하글 남기기</h2>
-                        <h5 class="h5 text-center pb-3 ww-title" style="font-family: 'Noto Serif KR', serif;">(github 계정 인증이 필요합니다)</h5>
+                        <h2 class="h1 text-center pb-3 ww-title" style="font-family: 'Noto Serif KR', serif;">축하메시지</h2><br>
+                        <div id="comments"></div>
                         <br>
-                        <div id="comments">
-                            <script src="https://utteranc.es/client.js"
-                                    repo="panddu/wedding-card"
-                                    issue-term="pathname"
-                                    theme="github-light"
-                                    crossorigin="anonymous"
-                                    async>
-                            </script>
-
+                        <div class="row">
+                            <div class="col text-center"><form action="https://github.com/AndersonChoi/wedding-card/blob/master/README.md">
+                                <button class="btn btn-primary btn-submit" type="submit">메시지 남기러 가기</button></form>
+                            </div>
                         </div>
-
-                        <br>
                     </div>
                 </div>
             </div>
@@ -209,13 +397,51 @@
     </div>
 </div>
 </div>
+<div aria-hidden="true" aria-labelledby="exampleModalLabel" class="modal fade" id="giftMailModal" role="dialog"
+     tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">선물하기 - <span id="gift-name"></span></h5>
+                <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">보내는 분 성함</span>
+                    </div>
+                    <input aria-describedby="basic-addon3" class="form-control" id="sender-name" type="text">
+                </div>
+                <div class="input-group">
+                    <textarea aria-label="With textarea" class="form-control" id="sender-message"
+                              placeholder="신랑, 신부에게 선물 예약과 함께 보낼 메시지를 입력해주세요. 이 메시지는 신랑, 신부에게 발송됩니다." rows=4></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" id="reserveGiftButton" type="button">예약</button>
+            </div>
+        </div>
+    </div>
+</div>
 <footer></footer>
-<script src="docs/scripts/main.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="js/aos.js"></script>
+<script src="js/parallax.min.js"></script>
+<script src="js/ekko-lightbox.min.js"></script>
+<script src="scripts/main.js"></script>
 
-<div class="bottom_right"><i class="fa fa-arrow-up fa-2x" id="go-to-top" style="cursor: pointer;"></i>
+<div class="bottom_right"><i class="fa fa-arrow-up fa-2x" id="go-to-top"></i>
 </div>
 
 <div class="bottom_left">
+    <audio id="player" src="mus.mp3"></audio>
+    <div>
+        <i class="fa fa-music fa-2x" onclick="document.getElementById('player').play()"></i>
+    </div>
 </div>
 
 </body>
